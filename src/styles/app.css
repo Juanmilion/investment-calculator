@@ -13,11 +13,23 @@
 .form {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    gap: 1.5rem;
     margin-bottom: 2rem;
 }
 
-.form input {
+.form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.3rem;
+}
+
+.form-group input {
     padding: 0.6rem;
     border-radius: 6px;
     border: 1px solid #ccc;
@@ -25,12 +37,17 @@
 
 .form button {
     grid-column: span 2;
-    padding: 0.7rem;
+    padding: 0.8rem;
     background: #3b82f6;
     border: none;
     color: white;
     border-radius: 6px;
     cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.form button:hover {
+    background: #2563eb;
 }
 
 .results {

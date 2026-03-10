@@ -10,6 +10,7 @@ type Props = {
 }
 
 export default function InvestmentForm({ onCalculate }: Props) {
+
     const [initial, setInitial] = useState(1000)
     const [monthly, setMonthly] = useState(200)
     const [years, setYears] = useState(10)
@@ -21,38 +22,55 @@ export default function InvestmentForm({ onCalculate }: Props) {
     }
 
     return (
+
         <form onSubmit={handleSubmit} className="form">
 
-            <input
-                type="number"
-                value={initial}
-                onChange={(e) => setInitial(Number(e.target.value))}
-                placeholder="Initial investment"
-            />
+            <div className="form-group">
+                <label>Initial investment (€)</label>
 
-            <input
-                type="number"
-                value={monthly}
-                onChange={(e) => setMonthly(Number(e.target.value))}
-                placeholder="Monthly contribution"
-            />
+                <input
+                    type="number"
+                    value={initial}
+                    onChange={(e) => setInitial(Number(e.target.value))}
+                    min="0"
+                />
+            </div>
 
-            <input
-                type="number"
-                value={years}
-                onChange={(e) => setYears(Number(e.target.value))}
-                placeholder="Years"
-            />
+            <div className="form-group">
+                <label>Monthly contribution (€)</label>
 
-            <input
-                type="number"
-                value={rate}
-                onChange={(e) => setRate(Number(e.target.value))}
-                placeholder="Interest rate %"
-            />
+                <input
+                    type="number"
+                    value={monthly}
+                    onChange={(e) => setMonthly(Number(e.target.value))}
+                    min="0"
+                />
+            </div>
+
+            <div className="form-group">
+                <label>Investment period (years)</label>
+
+                <input
+                    type="number"
+                    value={years}
+                    onChange={(e) => setYears(Number(e.target.value))}
+                    min="1"
+                />
+            </div>
+
+            <div className="form-group">
+                <label>Expected annual return (%)</label>
+
+                <input
+                    type="number"
+                    value={rate}
+                    onChange={(e) => setRate(Number(e.target.value))}
+                    step="0.1"
+                />
+            </div>
 
             <button type="submit">
-                Calculate
+                Calculate investment growth
             </button>
 
         </form>
